@@ -26,7 +26,7 @@ function getScoreByColor(color){
 }
 
 // method that manages everything in the screen regarding the criation of
-// a new ball, the redraw of older balls below their older positions,
+// a new ball, the redraw of older balls below their old positions,
 // the increment of Sum (balls counter), Score and the resize of the canvas to
 // hold another ball
 function drawCircle(color){
