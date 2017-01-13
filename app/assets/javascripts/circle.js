@@ -17,4 +17,8 @@ class Circle {
     this.context.closePath();
   }
 
+  toString() {
+    return `X: ${this.x}, Y: ${this.y}, Radius: ${this.radius}, Color: ${this.color}`;
+  }
+
 }

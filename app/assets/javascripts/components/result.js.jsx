@@ -1,18 +1,16 @@
-class Result extends React.Component {
+// class Result extends React.Component {
+function Result({ nameOfClass, area, value }) {
 
-  render() {
-    return (
-      <div className={this.props.class_name}>
-        {this.props.area}
-        <span id={this.props.area}>{this.props.value}</span>
-      </div>
-    );
-  }
-
+  return (
+    <div className={nameOfClass}>
+      {area}
+      <span id={area}>{value}</span>
+    </div>
+  )
 }
 
 Result.propTypes = {
-  class_name: React.PropTypes.string,
-  area: React.PropTypes.string,
-  value: React.PropTypes.number,
+  nameOfClass: React.PropTypes.string.isRequired,
+  area: React.PropTypes.string.isRequired,
+  value: React.PropTypes.number.isRequired,
 };

@@ -49,20 +49,18 @@ class BallsManager extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
-    const ballsCount = this.state.ballsCount + 1;
+    const BALLSCOUNT = this.state.ballsCount + 1;
     let score = this.state.score;
     let color = '';
-
     BallsManager.accessServer(
-      ballsCount,
+      BALLSCOUNT,
       (data) => {
         color = JSON.parse(data).color;
         score += BallsManager.getScoreByColor(color);
       },
       this.token,
     );
-    this.setState({ ballsCount, score, color });
+    this.setState({ ballsCount: BALLSCOUNT, score, color });
   }
 
   render() {
@@ -75,9 +73,9 @@ class BallsManager extends React.Component {
             </center>
           </div>
           <div className="results_area">
-            <Result area={'Sum'} class_name={'sum_area'} value={this.state.ballsCount} />
+            <Result area={'Sum'} nameOfClass={'sum_area'} value={this.state.ballsCount} />
 
-            <Result area={'Score'} class_name={'score_area'} value={this.state.score} />
+            <Result area={'Score'} nameOfClass={'score_area'} value={this.state.score} />
           </div>
         </div>
         <div className="container_canvas">
