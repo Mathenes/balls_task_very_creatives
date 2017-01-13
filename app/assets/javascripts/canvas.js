@@ -1,19 +1,19 @@
 // circle properties
-function Circle(color){
-  this.x = canvas.width / 2;
-  this.y = 50;
-  this.radius = 30;
-  this.color = color;
-}
+// function Circle(color){
+//   this.x = canvas.width / 2;
+//   this.y = 50;
+//   this.radius = 30;
+//   this.color = color;
+// }
 
 // method that draw a circle in the canvas
-Circle.prototype.draw = function(){
-  context.beginPath();
-  context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-  context.fillStyle = this.color;
-  context.fill();
-  context.closePath();
-}
+// Circle.prototype.draw = function(){
+//   context.beginPath();
+//   context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
+//   context.fillStyle = this.color;
+//   context.fill();
+//   context.closePath();
+// }
 
 // a tiny method in es6, just for a little bonus. =]
 function getKeyByValue(object, value) {
