@@ -21,13 +21,13 @@ class Canvas extends React.Component {
   }
 
   handleBallInsertion() {
-    const CONTEXT = this.canvas.getContext('2d');
+    const context = this.canvas.getContext('2d');
     const ball = this.state.balls[this.state.balls.length - 1];
     const balls = this.state.balls;
     if (this.props.color) {
       if (balls.length > 1) {
         // clear the canvas
-        CONTEXT.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         // increase canvas height for one more circle
         this.canvas.height += 85;
         // increase y axis for all circles to be drawn at a new position
@@ -43,7 +43,7 @@ class Canvas extends React.Component {
 
   render() {
     return (
-      <canvas id="balls_canvas" height="100" ref={input => this.canvas = input}>
+      <canvas id="balls_canvas" height="100" ref={(input) => { this.canvas = input; }}>
         { 'Your browser cannot render canvas! Please download one that can! Like chrome!' }
       </canvas>
     );

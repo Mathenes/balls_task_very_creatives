@@ -10,8 +10,8 @@ class BallsManager extends React.Component {
 
   static accessServer(ballsCounter, success, token) {
     const params = JSON.stringify({ balls_core: { sum: ballsCounter } });
-    const COMPLETE_URL = '/balls_core/send_sum';
-    this.xhr.open('POST', COMPLETE_URL, true);
+    const url = Routes.send_sum_balls_core_index_path({ format: 'json' });
+    this.xhr.open('POST', url, true);
     this.xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
     this.xhr.setRequestHeader('X-CSRF-TOKEN', token);
     this.xhr.onreadystatechange = () => {
@@ -52,15 +52,15 @@ class BallsManager extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const BALLSCOUNT = this.state.ballsCount + 1;
+    const ballsCount = this.state.ballsCount + 1;
     let score = this.state.score;
     let color = '';
     BallsManager.accessServer(
-      BALLSCOUNT,
+      ballsCount,
       (data) => {
         color = JSON.parse(data).color;
         score += BallsManager.getScoreByColor(color);
-        this.setState({ ballsCount: BALLSCOUNT, score, color });
+        this.setState({ ballsCount, score, color });
       },
       this.token,
     );

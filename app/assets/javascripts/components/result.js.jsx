@@ -4,7 +4,7 @@ function Result({ nameOfClass, area, value }) {
       {area}
       <span id={area}>{value}</span>
     </div>
-  )
+  );
 }
 
 Result.propTypes = {
