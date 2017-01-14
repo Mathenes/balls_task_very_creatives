@@ -1,6 +1,4 @@
-// class Result extends React.Component {
 function Result({ nameOfClass, area, value }) {
-
   return (
     <div className={nameOfClass}>
       {area}
