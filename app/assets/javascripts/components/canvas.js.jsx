@@ -9,20 +9,10 @@ class Canvas extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.color) {
       let balls = this.state.balls;
-      this.state.balls.forEach((ball, index) => {
-        balls[index].y += 85;
-      });
+      this.state.balls.forEach((ball, index) => { balls[index].y += 85; });
       const ball = new Circle(nextProps.color, this.canvas);
       balls = React.addons.update(balls, { $push: [ball] });
       this.setState({ balls });
-
-      // if (balls.length > 1) {
-      //   balls.forEach((_ball, index, array) => {
-      //     if (index !== array.length - 1) {
-      //       _ball.y += 85;
-      //     }
-      //   });
-      // }
     }
   }
 
