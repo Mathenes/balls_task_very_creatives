@@ -43,7 +43,9 @@ class Canvas extends React.Component {
 
   render() {
     return (
-      <canvas id="balls_canvas" height="100" ref={(input) => { this.canvas = input; }}>
+      <canvas
+        id="balls_canvas" className="fit" height="100" ref={(input) => { this.canvas = input; }}
+      >
         { 'Your browser cannot render canvas! Please download one that can! Like chrome!' }
       </canvas>
     );

@@ -68,20 +68,24 @@ class BallsManager extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="container_header">
-          <div className="button_area">
-            <center>
-              <button type="submit" onClick={this.handleSubmit}>Drop</button>
+      <div className="container absolute clearfix border-box border mx-auto">
+        <div className="container_header fit bg-gray" >
+          <div id="button_area" className="button_area">
+            <center className="pt2">
+              <button
+                type="submit" className="not-rounded" onClick={this.handleSubmit}
+              >
+                Drop
+              </button>
             </center>
           </div>
-          <div className="results_area">
-            <Result area={'Sum'} nameOfClass={'sum_area'} value={this.state.ballsCount} />
+          <div id="results_area" className="results_area h4 pl1 pr1">
+            <Result id="sum_area" area={'Sum'} nameOfClass={'left pl3'} value={this.state.ballsCount} />
 
-            <Result area={'Score'} nameOfClass={'score_area'} value={this.state.score} />
+            <Result id="score_area" area={'Score'} nameOfClass={'right pr3'} value={this.state.score} />
           </div>
         </div>
-        <div className="container_canvas">
+        <div id="container_canvas" className="container_canvas fit overflow-scroll">
           <Canvas color={this.state.color} />
         </div>
       </div>
