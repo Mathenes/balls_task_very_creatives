@@ -37,7 +37,7 @@ class Canvas extends React.Component {
         context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         // increase canvas height for one more circle
         this.canvas.height += 85;
-        // increase y axis for all circles to be drawn at a new position
+        // redraw all the previous balls
         balls.forEach((_ball, index, array) => {
           if (index !== array.length - 1) {
             _ball.draw();
