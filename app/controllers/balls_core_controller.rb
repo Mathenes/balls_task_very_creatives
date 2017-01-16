@@ -12,6 +12,11 @@ class BallsCoreController < ApplicationController
     end
   end
 
+  def get_colors_and_scores
+    @colors = BallsCore::COLORS
+    @scores = BallsCore::SCORES
+  end
+
   private
     def balls_core_params
       params.require(:balls_core).permit(:sum)
