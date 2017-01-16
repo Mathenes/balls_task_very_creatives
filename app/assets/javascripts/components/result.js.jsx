@@ -6,7 +6,7 @@ function Result({ nameOfClass, area, value }) {
     </div>
   );
 }
-// Verificar o id acima!!!
+
 Result.propTypes = {
   nameOfClass: React.PropTypes.string.isRequired,
   area: React.PropTypes.string.isRequired,

@@ -1,4 +1,6 @@
 class Circle {
+// A ball is defined by a circle, a 2d element in the canvas renderer.
+// This class has all the properties and methods for drawning a ball in the canvas.
 
   constructor(color, canvas) {
     this.canvas = canvas;

@@ -18,23 +18,29 @@ class BallsManager extends React.Component {
     this.state = { ballsCount: 0, score: 0, color: '' };
   }
 
+// Return the key of an element by its value
   getKeyByValue(value) {
     return Object.keys(this.colors).find(key => this.colors[key] === value);
   }
 
+// As the name says, return the score based on the color given
   getScoreByColor(color) {
     return this.scores[this.getKeyByValue(color)];
   }
 
-  getColorsAndScores(success, token) {
+// Function that fires a JSON GET requisition to get colors and scores values
+// from the backend and returns the response in the callback function "success"
+  getColorsAndScores(success) {
     const url = Routes.get_colors_and_scores_balls_core_index_path({ format: 'json' });
     this.xhr.open('GET', url, true);
     this.xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-    this.xhr.setRequestHeader('X-CSRF-TOKEN', token);
+    this.xhr.setRequestHeader('X-CSRF-TOKEN', this.token);
     this.xhr.onload = () => { success(this.xhr.responseText); };
     this.xhr.send(null);
   }
 
+// Function that fires a JSON POST submission sending the number of balls as a parameter
+// and returning the response in the callback function "success"
   accessServer(ballsCounter, success) {
     const params = JSON.stringify({ balls_core: { sum: ballsCounter } });
     const url = Routes.send_sum_balls_core_index_path({ format: 'json' });
@@ -51,16 +57,20 @@ class BallsManager extends React.Component {
     this.xhr.send(params);
   }
 
+// Method that handles the onClick event of the button; So it use access_server
+// method to get the color based on the number of balls sent.
+// It then updates all the states of the component with their respectives new values.
   handleSubmit(event) {
     event.preventDefault();
     const ballsCount = this.state.ballsCount + 1;
-    let score = this.state.score;
+    let score = Object.assign(this.state.score);
     let color = '';
     this.accessServer(
       ballsCount,
       (data) => {
         color = JSON.parse(data).color;
         score += this.getScoreByColor(color);
+        // States are updated only by a success requisition.
         this.setState({ ballsCount, score, color });
       },
     );
